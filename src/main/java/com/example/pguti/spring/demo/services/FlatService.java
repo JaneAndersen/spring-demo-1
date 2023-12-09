@@ -34,7 +34,17 @@ public class FlatService {
         if (retry) {
             throw new IllegalArgumentException("Земля плоская");
         }
-
         return "Земля круглая";
+    }
+
+    public Flat getFlat(Long id) {
+        return flatsRepository.findById(id).get();
+    }
+    public Flat updateFlat(Long id, Flat flat) {
+        flat.setId(id);
+        return flatsRepository.save(flat);
+    }
+    public void deleteFlat(Long id) {
+        flatsRepository.deleteById(id);
     }
 }
